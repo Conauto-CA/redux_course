@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import validator from "validator";
@@ -8,9 +8,11 @@ import { removeError, setError } from "../redux/actions/ui";
 import useForm from "./useForm";
 
 
- const userRegister = () => {
+ const useRegister = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+  const { msgError } = useSelector(state => state.ui);
+
     const [showPassword, setShowPassword] = useState({
         password: false,
         password2: false,
@@ -63,18 +65,22 @@ import useForm from "./useForm";
     }
 
     const handlePasswordView = (id) => () => {
-        setShowPasswords({
-            ...showPasswords,
-            [id]: !showPasswords[id],
+        setShowPassword({
+            ...showPassword,
+            [id]: !showPassword[id],
         });
     };
 return {
     handleRegister,
     onLoginRedirect,
     handleMouseDownPassword,
-    handlePasswordView
+    handlePasswordView,
+    handleInputChange,
+    msgError,
+    showPassword,
+    formValues,
 }
 
 }
 
-export default userRegister;
+export default useRegister;
