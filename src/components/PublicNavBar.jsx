@@ -97,7 +97,7 @@ export const PublicNavBar = () => {
                         ))}
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Abrir Jornal APP">
+                        <Tooltip title="Abrir Todo In">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar>
                                     <AssignmentIcon />
