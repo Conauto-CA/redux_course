@@ -1,10 +1,11 @@
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { startLoginWithEmailPassword } from "../redux/actions/auth";
 import {useNavigate} from "react-router-dom";
 
 const useLogin = () => {
   const dispatch = useDispatch();
+  const { msgError } = useSelector(state => state.ui);
   const navigate = useNavigate();
   const [values, setValues] = useState({
     password: '',
@@ -44,6 +45,7 @@ const useLogin = () => {
     handleMouseDownPassword,
     handleRegistry,
     handleLogin,
+    msgError
   }
 }
 
