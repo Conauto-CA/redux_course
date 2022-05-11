@@ -32,11 +32,7 @@ import useForm from "./useForm";
         navigate('/login');
     }
     const handleRegister = () => {
-        if (isFormValid()) {
-            dispatch(startInsideRegister(email, password, name, role, { onLoginRedirect }));
-        } else {
-            window.location.reload();
-        }
+            dispatch(startInsideRegister(email, password, name, role, { onLogin }));
     }
     const onLogin = () => {
         navigate('/');
