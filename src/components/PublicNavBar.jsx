@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import { ENTERPRISE_NAME, MENUBAR, SUBMENU } from '../db/globals';
+import { ENTERPRISE_NAME} from '../db/globals';
 
-export const PublicNavBar = () => {
+export const PublicNavBar = (props) => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const navigate = useNavigate();
@@ -68,7 +68,7 @@ export const PublicNavBar = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {MENUBAR.map((page, index) => (
+                            {props.MENUBAR.map((page, index) => (
                                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page.label}</Typography>
                                 </MenuItem>
@@ -84,7 +84,7 @@ export const PublicNavBar = () => {
                         LOGO
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {MENUBAR.map((page, index) => (
+                        {props.MENUBAR.map((page, index) => (
                             <Tooltip key={index} title={`Abrir ${page.label}`}>
                                 <Button
                                     key={index}
@@ -121,7 +121,7 @@ export const PublicNavBar = () => {
                             onClose={handleCloseUserMenu}
                         >
                             {
-                                SUBMENU.map((journalItem, index) => (
+                                props.SUBMENU.map((journalItem, index) => (
                                     <MenuItem key={index} >
                                         <Link to={`${journalItem.path}`}>
                                             <Typography textAlign="center">
